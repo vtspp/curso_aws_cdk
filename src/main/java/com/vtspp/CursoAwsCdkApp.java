@@ -1,16 +1,15 @@
 package com.myorg;
 
 import software.amazon.awscdk.core.App;
-import software.amazon.awscdk.core.Environment;
 import software.amazon.awscdk.core.StackProps;
-
-import java.util.Arrays;
 
 public class CursoAwsCdkApp {
     public static void main(final String[] args) {
         App app = new App();
+        new VpcStack(app, "VPC", StackProps.builder().build()); // Minha VPC
+        app.synth();
 
-        new CursoAwsCdkStack(app, "CursoAwsCdkStack", StackProps.builder()
+        //new CursoAwsCdkStack(app, "CursoAwsCdkStack", StackProps.builder()
                 // If you don't specify 'env', this stack will be environment-agnostic.
                 // Account/Region-dependent features and context lookups will not work,
                 // but a single synthesized template can be deployed anywhere.
@@ -34,8 +33,6 @@ public class CursoAwsCdkApp {
                 */
 
                 // For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-                .build());
-
-        app.synth();
+                //.build());
     }
 }
