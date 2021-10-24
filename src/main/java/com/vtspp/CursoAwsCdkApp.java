@@ -1,12 +1,23 @@
-package com.myorg;
+package com.vtspp;
 
+import com.vtspp.stacks.clusters.ClusterStack;
+import com.vtspp.stacks.services.Service01;
+import com.vtspp.stacks.vpcs.VpcStack;
 import software.amazon.awscdk.core.App;
 import software.amazon.awscdk.core.StackProps;
 
 public class CursoAwsCdkApp {
     public static void main(final String[] args) {
         App app = new App();
-        new VpcStack(app, "VPC", StackProps.builder().build()); // Minha VPC
+
+        VpcStack vpc = new VpcStack(app, "vpc-01", StackProps.builder().build());
+
+        ClusterStack cluster = new ClusterStack(app, "cluster-01", StackProps.builder().build(), vpc.getVpc());
+        cluster.addDependency(vpc);
+
+        Service01 service = new Service01(app, "service-01", StackProps.builder().build(), cluster.getCluster());
+        service.addDependency(cluster);
+
         app.synth();
 
         //new CursoAwsCdkStack(app, "CursoAwsCdkStack", StackProps.builder()

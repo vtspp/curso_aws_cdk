@@ -1,5 +1,6 @@
 package com.myorg;
 
+import com.vtspp.stacks.vpcs.VpcStack;
 import software.amazon.awscdk.core.App;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,7 +18,7 @@ public class CursoAwsCdkTest {
     @Test
     public void testStack() throws IOException {
         App app = new App();
-        CursoAwsCdkStack stack = new CursoAwsCdkStack(app, "test");
+        VpcStack stack = new VpcStack(app, "test");
 
         // synthesize the stack to a CloudFormation template
         JsonNode actual = JSON.valueToTree(app.synth().getStackArtifact(stack.getArtifactId()).getTemplate());

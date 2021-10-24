@@ -30,7 +30,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>com.myorg.CursoAwsCdkApp</mainClass>
+                    <mainClass>com.vtspp.CursoAwsCdkApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -45,22 +45,43 @@
         </dependency>
 
         <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>ec2</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>ecs</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>ecs-patterns</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-api</artifactId>
           <version>${junit.version}</version>
           <scope>test</scope>
         </dependency>
+
         <dependency>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-engine</artifactId>
           <version>${junit.version}</version>
           <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.18.1</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 </project>
